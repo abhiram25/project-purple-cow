@@ -47,7 +47,8 @@ class ItemsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_item
-      @item = Item.find(params[:id])
+      @item = Item.find_by_id(params[:id].to_i)
+      render json: {msg:"There is no item with the id #{params[:id]} "}, status: :unprocessable_entity unless @item
     end
 
     # Only allow a list of trusted parameters through.
