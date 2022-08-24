@@ -15,12 +15,7 @@ class ItemsController < ApplicationController
   # POST /items or /items.json
   def create
     @item = Item.new(item_params)
-
-    if @item.save
-      render json: @item, status: :ok
-    else
-      render json: @item.errors, status: :unprocessable_entity
-    end
+    render json: @item, status: :ok
   end
 
   # PATCH/PUT /items/1 or /items/1.json
@@ -46,6 +41,8 @@ class ItemsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+
+    # If the item id does not exist, then render the following message
     def set_item
       @item = Item.find_by_id(params[:id].to_i)
       render json: {msg:"There is no item with the id #{params[:id]} "}, status: :unprocessable_entity unless @item
