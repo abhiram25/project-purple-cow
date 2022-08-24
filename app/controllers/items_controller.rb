@@ -19,7 +19,7 @@ class ItemsController < ApplicationController
     if @item.save
       render json: @item, status: :ok
     else
-      render json: @item.errors, status: :unprocessable_entity }
+      render json: @item.errors, status: :unprocessable_entity
     end
   end
 
@@ -28,7 +28,7 @@ class ItemsController < ApplicationController
     if @item.update(item_params)
       render json: @item, status: :ok
     else
-      render json: @item.errors, status: :unprocessable_entity }
+      render json: @item.errors, status: :unprocessable_entity
     end
   end
 
